@@ -22,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
     if (param) {
       const id = +param;
       this.pageTitle += `: ${id}`;
+      this.getProduct(id);
     }
   }
 
@@ -29,7 +30,7 @@ export class ProductDetailComponent implements OnInit {
     this.productService.getProduct(id).subscribe({
       next: product => this.product = product,
       error: err => this.errorMessage = err
-    })
+    });
   }
 
   onBack(): void {

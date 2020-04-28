@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from '././home/welcome.component';
 import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
+import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found-component';
 
 @NgModule({
   declarations: [
@@ -14,11 +16,16 @@ import { UserModule } from './user/user.module';
     WelcomeComponent,
   ],
   imports: [
-    UserModule,
     BrowserModule,
     HttpClientModule,
     ProductModule,
-    AppRoutingModule,
+    UserModule,
+    // AppRoutingModule,
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // Default route
+      { path: '**', component: PageNotFoundComponent }, // In case the requested URL doesn't match or uses as 404 page;
+    ]),
   ],
   bootstrap: [AppComponent],
 })

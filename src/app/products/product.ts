@@ -1,5 +1,4 @@
 export interface IProduct {
-  productId: number;
   productName: string;
   productCode: string;
   releaseDate: string;
@@ -7,8 +6,15 @@ export interface IProduct {
   description: string;
   starRating: number;
   imageUrl: string;
+  id: number;
+  category: string;
+  tags?: string[];
 }
 
+export interface IProductResolved {
+  product: IProduct;
+  error?: any;
+}
 /*export class Product implements IProduct {
 
   constructor(public productId: number,
